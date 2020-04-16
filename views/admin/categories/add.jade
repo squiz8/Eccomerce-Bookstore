@@ -1,0 +1,13 @@
+extends ../../admin/adminlayout
+
+block content
+    h1 Add Category
+    ul.errors
+        if errors
+            each error, i in errors
+                li.alert.alert-danger #{error.msg}
+    form(method='post', action='/admin/categories/add')
+        .form-group
+            label Name
+            input.form-control(name='name', type='text', placeholder='Enter Category Name')
+        input.btn.btn-primary(name='submit', type='submit', values='Submit')

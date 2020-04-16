@@ -1,0 +1,14 @@
+extends layout
+
+block content
+  if books 
+    each book, i in books 
+      div.col-lg-3.book
+        img(src="/images/#{book.coverimage}", alt="", srcset="")
+        h4 #{book.title}
+        p #{book.truncText}
+        div.price Buy it for 
+          span $#{book.price} 
+        br
+        a(href="/books/details/#{book._id}").btn.btn-primary Book Details 
+    

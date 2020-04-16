@@ -1,0 +1,19 @@
+extends ../layout
+
+block content
+    div.row
+        div.col-lg-4.details
+            img(src="/images/#{book.coverimage}", alt="")
+        div.col-lg-8
+            h2 #{book.title}
+            ul.bookinfo
+                li Category: #{book.category}
+                li Author: #{book.author}
+                li Publisher: #{book.publisher}
+            br
+            div.price Buy it for 
+                span $#{book.price}
+            br
+            p #{book.description}
+            form(method="post", action="/cart/#{book._id}",)
+                input.btn.btn-success(type="submit", name="submit", value="Add to cart")

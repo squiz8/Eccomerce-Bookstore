@@ -1,0 +1,25 @@
+extends ../../admin/adminlayout
+
+block content 
+  h1 Categories
+  br
+  p
+    a(href="/admin/categories/add").btn.btn-success Add Category
+  table.table.table-striped.table-dark
+    thead            
+        tr
+            th.col ID
+            th.col Category Name
+            th.col
+            th.col 
+    tbody
+    if categories
+    each category, i in categories
+        tr
+            th.row #{category._id}
+            td #{category.name}
+            td 
+                a(href="/admin/categories/edit/#{category._id}").btn.btn-sm.btn-primary Edit
+            td 
+                a(href="#", data-id="#{category._id}").btn.btn-sm.btn-danger.removeCategory Delete
+    

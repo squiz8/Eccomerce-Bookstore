@@ -1,0 +1,27 @@
+extends ../../admin/adminlayout
+
+block content 
+    h1 Books
+    br
+    p
+        a(href="/admin/books/add").btn.btn-success Add Book
+    table.table.table-striped.table-dark
+        thead            
+            tr
+                th.col ID
+                th.col Book Title
+                th.col Category
+                th.col
+                th.col 
+        tbody
+        if books
+            each book, i in books
+                tr
+                    th.row #{book._id}
+                    td #{book.title}
+                    td #{book.category}
+                    td 
+                        a(href="/admin/books/edit/#{book._id}").btn.btn-sm.btn-primary Edit
+                    td 
+                        a(href="#", data-id="#{book._id}").btn.btn-sm.btn-danger.alert.removeBook Delete
+            

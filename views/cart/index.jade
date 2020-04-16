@@ -1,0 +1,32 @@
+extends ../layout
+
+block content
+    div.row
+        div.col-lg-12
+            h2 Your Shopping Cart 
+                span 
+                    a(href="/cart/remove") Empty Cart
+        if cart
+            table.table.table-striped.table-dark
+                thead
+                    tr
+                        th(width="650") Item
+                        th(width="100") Quantity
+                        th(width="100") Total
+                        th(width="100")
+                tbody
+                    each c, i in cart
+                        each item, j in c
+                            tr 
+                                td 
+                                    a(href="books/details/#{item.id}") #{item.title}
+                                td #{item.qty} 
+                                td $#{item.price * item.qty}
+                                td 
+            .row
+                .col-lg-6   
+                    h4 Total: $
+                        strong #{cart.total}                
+        
+        else 
+            p There are no items in the cart
